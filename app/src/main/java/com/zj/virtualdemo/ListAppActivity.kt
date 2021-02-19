@@ -35,7 +35,7 @@ class ListAppActivity : AppCompatActivity() {
             // ignore the System package
             hostPkg != packageInfo.packageName
                     && VirtualCore.TAICHI_PACKAGE != packageInfo.packageName
-                    && !is SystemApplication(packageInfo)
+                    && !isSystemApplication(packageInfo)
         }.map { app ->
             appInfo(app)
         }.sortedBy {
