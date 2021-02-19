@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="appInfo"
+            type="com.zj.virtualdemo.models.AppInfo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:onClick="@{clickListener}">
+
+        <ImageView
+            android:id="@+id/item_app_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@{appInfo.icon}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <com.zj.virtualdemo.widgets.MarqueeTextView
+            android:id="@+id/mt_app_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:ellipsize="marquee"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="@{appInfo.name}"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/mt_app_path"
+            app:layout_constraintStart_toEndOf="@+id/item_app_icon"
+            app:layout_constraintTop_toTopOf="@+id/item_app_icon"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="百度地图" />
+
+        <com.zj.virtualdemo.widgets.MarqueeTextView
+            android:id="@+id/mt_app_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="marquee"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:text="@{appInfo.path}"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/item_app_icon"
+            app:layout_constraintStart_toStartOf="@+id/mt_app_name"
+            app:layout_constraintTop_toBottomOf="@+id/mt_app_name"
+            tools:text="path" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
