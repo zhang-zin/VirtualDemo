@@ -6,8 +6,10 @@ import android.os.Build
 import com.lody.virtual.client.NativeEngine
 import com.lody.virtual.client.core.VirtualCore
 import com.lody.virtual.client.stub.VASettings
+import com.zj.virtualdemo.delegate.MyVirtualInitializer
 
 class App : Application() {
+
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -20,5 +22,11 @@ class App : Application() {
         } catch (e: Throwable) {
             e.printStackTrace()
         }
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        val virtualCore = VirtualCore.get()
+        virtualCore.initialize(MyVirtualInitializer(this, virtualCore))
     }
 }

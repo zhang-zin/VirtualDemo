@@ -12,6 +12,14 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_all_app"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="4"
+            tools:listitem="@layout/all_app_item" />
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fl_add"
             android:layout_width="wrap_content"

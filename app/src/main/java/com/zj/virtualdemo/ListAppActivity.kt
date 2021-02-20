@@ -4,6 +4,7 @@ import android.content.pm.ApplicationInfo
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -19,11 +20,15 @@ import com.zj.virtualdemo.models.AppInfoLite
 import com.zj.virtualdemo.utils.HanziToPinyin
 
 class ListAppActivity : AppCompatActivity() {
+
+    lateinit var dataBinding: ActivityListAppBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding =
             DataBindingUtil.setContentView<ActivityListAppBinding>(this, R.layout.activity_list_app)
         loadAppList(binding)
+        dataBinding = binding
     }
 
     private fun loadAppList(binding: ActivityListAppBinding) {
@@ -42,6 +47,7 @@ class ListAppActivity : AppCompatActivity() {
             HanziToPinyin.getInstance().toPinyinString(it.name.toString().trim())
         }
         val appListAdapter = AppListAdapter(appList) { appInfo ->
+            dataBinding.progressBar.visibility = View.VISIBLE
             cloneApp(appInfo)
         }
 
@@ -69,6 +75,7 @@ class ListAppActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "fail", Toast.LENGTH_SHORT).show()
             }
+            dataBinding.progressBar.visibility = View.GONE
 
         } catch (e: Exception) {
         }

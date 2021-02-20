@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{clickListener}">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_app_icon"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_app_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/tv_app_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:singleLine="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_app_icon"
+            app:layout_constraintStart_toStartOf="@+id/iv_app_icon"
+            app:layout_constraintTop_toBottomOf="@+id/iv_app_icon"
+            tools:text="百度网盘" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
